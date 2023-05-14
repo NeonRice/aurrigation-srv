@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Greenhouse data",
+    "type": "object",
+    "properties": {
+        "temperature": {
+            "type": "number",
+            "description": "Temperature, reported by DHT22 sensor"
+        },
+        "humidity": {
+            "type": "number",
+            "description": "Humidity, reported by DHT22 sensor"
+        },
+        "soilHumidity": {
+            "description": "Soil humidity from capacitive soil sensor. It is relative to the values captured by experimenting - 100% is submerged in water, 0% in air",
+            "type": "number",
+            "minimum": 0
+        },
+        "soilHumidityRaw": {
+            "description": "Raw value captured by soil humidity sensor",
+            "type": "integer",
+            "minimum": 0
+        },
+        "pumpTime": {
+            "description": "Raw value captured by soil humidity sensor",
+            "type": "integer",
+            "minimum": 0
+        },
+        "timestamp": {
+            "description": "Timestamp of data capture. This timestamp is created on data arrival to the server",
+            "type": ["string", "null"],
+        }
+    }
+}
