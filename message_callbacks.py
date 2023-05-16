@@ -12,12 +12,17 @@ data_schema = "schemas/data_schema.json"
 def on_data(client, userdata, message):
     # Capturing time is done server-side, so small inaccuracies expected
     time = datetime.datetime.now().isoformat()
+    print(message.payload.decode('utf-8'))
     try:
         data = json.loads(message.payload.decode('utf-8'))
         # Process the data here
         print(data)
     except json.decoder.JSONDecodeError:
         print("Error: Bad JSON format")
+        return
+
+    # Add timestamp
+    data["timestamp"] = time
 
     if not validate(data, data_schema):
         print("Data entry not saved, bad format of sent data")
@@ -34,8 +39,6 @@ def on_data(client, userdata, message):
         fieldnames = get_properties(data_schema)
         # Create a CSV writer object
         writer = csv.DictWriter(file, fieldnames=fieldnames)
-
-        data["time"] = time
 
         if os.stat(data_file).st_size == 0:
             writer.writeheader()

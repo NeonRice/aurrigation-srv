@@ -11,24 +11,24 @@
             "type": "number",
             "description": "Humidity, reported by DHT22 sensor"
         },
-        "soilHumidity": {
-            "description": "Soil humidity from capacitive soil sensor. It is relative to the values captured by experimenting - 100% is submerged in water, 0% in air",
+        "soilMoisture": {
+            "description": "Soil moisture from capacitive soil sensor. It is relative to the values captured by experimenting - 100% is submerged in water, 0% in air",
             "type": "number",
             "minimum": 0
         },
-        "soilHumidityRaw": {
+        "soilMoistureRaw": {
             "description": "Raw value captured by soil humidity sensor",
             "type": "integer",
             "minimum": 0
         },
         "pumpTime": {
-            "description": "Raw value captured by soil humidity sensor",
+            "description": "Time in ms that pump worked in the cycle",
             "type": "integer",
             "minimum": 0
         },
         "timestamp": {
             "description": "Timestamp of data capture. This timestamp is created on data arrival to the server",
-            "type": ["string", "null"],
+            "type": ["string", "null"]
         }
     }
 }
